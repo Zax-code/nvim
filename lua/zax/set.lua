@@ -28,6 +28,7 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.updatetime = 50
 
+-- For WSL only
 vim.g.clipboard = {
   name = "WslClipboard",
   copy = {
