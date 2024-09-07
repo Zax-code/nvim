@@ -29,9 +29,13 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
-  ensure_installed = { 'tsserver', 'rust_analyzer' },
+  ensure_installed = { 'tsserver', 'volar' },
   handlers = {
     function(server_name)
+      -- This if is a temporary fix for the new name for lspinstall ts_ls thingy
+      if server_name == "tsserver" then
+        server_name = "ts_ls"
+      end
       require('lspconfig')[server_name].setup({})
     end,
   }
@@ -71,11 +75,11 @@ cmp.setup({
 })
 local mason_registry = require('mason-registry')
 local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-'/node_modules/@vue/language-server'
+    '/node_modules/@vue/language-server'
 
 local lspconfig = require('lspconfig')
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   init_options = {
     plugins = {
       {
