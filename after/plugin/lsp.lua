@@ -29,13 +29,9 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
-  ensure_installed = { 'tsserver', 'volar' },
+  ensure_installed = { 'ts_ls', 'volar' },
   handlers = {
     function(server_name)
-      -- This if is a temporary fix for the new name for lspinstall ts_ls thingy
-      if server_name == "tsserver" then
-        server_name = "ts_ls"
-      end
       require('lspconfig')[server_name].setup({})
     end,
   }
