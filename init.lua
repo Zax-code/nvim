@@ -1,1 +1,2 @@
 require("zax")
+require("config")

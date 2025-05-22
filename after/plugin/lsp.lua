@@ -37,6 +37,7 @@ require('mason-lspconfig').setup({
   }
 })
 
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
@@ -87,6 +88,3 @@ lspconfig.ts_ls.setup {
   },
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 }
-
--- No need to set `hybridMode` to `true` as it's the default value
-lspconfig.volar.setup {}
