@@ -23,6 +23,7 @@ return {
   { 'tpope/vim-fugitive' },
   {
     "mason-org/mason.nvim",
+    version = "1.11.0" ,
     opts = {
       ui = {
         icons = {
@@ -39,8 +40,8 @@ return {
     dependencies = {
       -- LSP Support
       'neovim/nvim-lspconfig',
-      'mason-org/mason.nvim',
-      'mason-org/mason-lspconfig.nvim',
+      { "mason-org/mason.nvim", version = "1.11.0" },
+      { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
 
       -- Autocompletion
       'hrsh7th/nvim-cmp',

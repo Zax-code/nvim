@@ -24,11 +24,6 @@ vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set({ "n", "x", "v" }, "<leader>w", ":w<Enter>")
 vim.keymap.set({ "n", "x", "v" }, "<leader>s", ":wa<Enter>")
-vim.keymap.set({ "n", "x", "v" }, "<leader>q", ":q<Enter>")
+vim.keymap.set({ "n", "x", "v" }, "<leader>q", ":wq<Enter>")
 
-vim.keymap.set("n", "<leader>n", function()
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  local clipboard = vim.fn.getreg("+", 1, true)  -- get clipboard as list of lines
-  vim.api.nvim_buf_set_lines(0, row, row, true, clipboard)
-  vim.api.nvim_win_set_cursor(0, { row + 1, 0 }) -- move to first line of inserted text
-end, { desc = "Insert clipboard below current line" })
+vim.keymap.set("n", "<leader>n", "o<Esc>\"+p")
