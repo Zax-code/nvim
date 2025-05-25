@@ -14,7 +14,9 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set({ 'n', 'x' }, '<leader>f', function()
+    vim.lsp.buf.format({ async = true })
+  end, opts)
   vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   vim.keymap.set('n', '<leader>of', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
 end
@@ -29,7 +31,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here
   -- with the ones you want to install
-  ensure_installed = { 'ts_ls', 'volar' },
+  ensure_installed = { 'ts_ls', 'vue_ls' },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
@@ -52,8 +54,8 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     -- Navigate between completion items
-    ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
-    ['<Tab>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
+    ['<C-S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+    ['<C-Tab>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
 
     -- `Enter` key to confirm completion
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -70,21 +72,3 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
   })
 })
-local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-    '/node_modules/@vue/language-server'
-
-local lspconfig = require('lspconfig')
-
-lspconfig.ts_ls.setup {
-  init_options = {
-    plugins = {
-      {
-        name = '@vue/typescript-plugin',
-        location = vue_language_server_path,
-        languages = { 'vue' },
-      },
-    },
-  },
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-}

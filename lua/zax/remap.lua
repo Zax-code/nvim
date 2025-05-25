@@ -27,3 +27,5 @@ vim.keymap.set({ "n", "x", "v" }, "<leader>s", ":wa<Enter>")
 vim.keymap.set({ "n", "x", "v" }, "<leader>q", ":wq<Enter>")
 
 vim.keymap.set("n", "<leader>n", "o<Esc>\"+p")
+-- Open new file in new tab with <leader>t (specify the file name)
+vim.keymap.set("n", "<leader>t", ":tabnew <C-r>=expand('%:p:h') . '/'<CR><Enter>", { noremap = true, silent = true })
