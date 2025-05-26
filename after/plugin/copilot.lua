@@ -5,11 +5,11 @@ vim.keymap.set('i', '<C-q>', 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
-vim.keymap.set('i', '<C-n>', 'copilot#Next()', {
+vim.keymap.set('i', '<C-m>', 'copilot#Next()', {
   expr = true,
   replace_keycodes = false
 })
-vim.keymap.set('i', '<C-p>', 'copilot#Previous()', {
+vim.keymap.set('i', '<C-o>', 'copilot#Previous()', {
   expr = true,
   replace_keycodes = false
 })
