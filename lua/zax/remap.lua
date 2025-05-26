@@ -28,4 +28,6 @@ vim.keymap.set({ "n", "x", "v" }, "<leader>q", ":wq<Enter>")
 
 vim.keymap.set("n", "<leader>n", "o<Esc>\"+p")
 -- Open new file in new tab with <leader>t (specify the file name)
-vim.keymap.set("n", "<leader>t", ":tabnew <C-r>=expand('%:p:h') . '/'<CR><Enter>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t", function()
+  require("new_file").create_file_in_dir()
+end, { desc = "Create file in selected directory" })
