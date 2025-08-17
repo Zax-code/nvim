@@ -6,6 +6,14 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
+  "jay-babu/mason-null-ls.nvim",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "nvimtools/none-ls.nvim", -- null-ls fork
+    "nvim-lua/plenary.nvim" ,
+  },
+},
+    {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
