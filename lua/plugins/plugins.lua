@@ -1,34 +1,26 @@
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
     -- or                            , branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
-  "jay-babu/mason-null-ls.nvim",
-  dependencies = {
-    "williamboman/mason.nvim",
-    "nvimtools/none-ls.nvim", -- null-ls fork
-    "nvim-lua/plenary.nvim" ,
-  },
-},
-    {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme catppuccin-macchiato')
-    end
+      vim.cmd("colorscheme catppuccin-macchiato")
+    end,
   },
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   {
     "jiaoshijie/undotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
-  { 'tpope/vim-fugitive' },
+  { "tpope/vim-fugitive" },
   {
     "mason-org/mason.nvim",
     opts = {
@@ -36,39 +28,38 @@ return {
         icons = {
           package_installed = "✓",
           package_pending = "➜",
-          package_uninstalled = "✗"
-        }
-      }
-    }
+          package_uninstalled = "✗",
+        },
+      },
+    },
   },
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v4.x',
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v4.x",
     dependencies = {
       -- LSP Support
-      'neovim/nvim-lspconfig',
+      "neovim/nvim-lspconfig",
       { "mason-org/mason.nvim" },
       { "mason-org/mason-lspconfig.nvim" },
 
-      -- null-ls for formatting and diagnostics
+      -- Autocompletion
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      -- Formatting
       {
-        'nvimtools/none-ls.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        "stevearc/conform.nvim",
+        opts = {},
       },
 
-      -- Autocompletion
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-
       -- Snippets
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
-    }
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets",
+    },
   },
-  { 'catgoose/vue-goto-definition.nvim' },
-  { 'github/copilot.vim' }
+  { "catgoose/vue-goto-definition.nvim" },
+  { "github/copilot.vim" },
 }
