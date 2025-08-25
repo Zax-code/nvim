@@ -101,7 +101,7 @@ function M.setup()
 	})
 end
 
-if string.match(string.lower(vim.loop.os_uname().sysname), "windows") then
+if string.match(string.lower(vim.loop.os_uname().sysname), "windows") or vim.env.WSL_DISTRO_NAME or vim.env.WSLENV then
 	return M
 else
 	vim.g.clipboard = "tmux"
